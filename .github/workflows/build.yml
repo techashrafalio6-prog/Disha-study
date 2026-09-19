@@ -22,8 +22,9 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
-      - name: Generate Wrapper & Build Debug APK
+      - name: Initialize Gradle & Build
         run: |
+          gradle init --type basic --script-style kotlin --no-incubating
           gradle wrapper
           chmod +x gradlew
           ./gradlew assembleDebug
