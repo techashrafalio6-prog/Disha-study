@@ -19,12 +19,15 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Make gradlew executable
+        run: chmod +x ./disha-online-classes/gradlew
+
       - name: Build Debug APK
-        run: bash gradlew assembleDebug
+        run: ./gradlew assembleDebug
+        working-directory: ./disha-online-classes
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: app-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
-          
+          path: disha-online-classes/app/build/outputs/apk/debug/app-debug.apk
